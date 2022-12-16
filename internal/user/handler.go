@@ -3,6 +3,7 @@ package user
 import (
 	"net/http"
 	"restapi/internal/handlers"
+	"restapi/pkg/logging"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -14,12 +15,16 @@ const (
 	userURl  = "/users/:uuid"
 )
 
+//В хэндерах используем логеры
 type handler struct {
+	logger logging.Logger
 }
 
-//создаем структуру, но возвращаем интерфейс
-func NewHandler() handlers.Handler {
-	return &handler{}
+//создаем структуру, но возвращаем интерфейс. Так лучше, потому что роутер может поменяться и если роутер поменяется все может сломаться
+func NewHandler(logger logging.Logger) handlers.Handler {
+	return &handler{
+		logger: logger,
+	}
 }
 
 //Наша структура handler реализует интерфейс хэндлер
