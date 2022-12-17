@@ -17,11 +17,11 @@ const (
 
 //В хэндерах используем логеры
 type handler struct {
-	logger logging.Logger
+	logger *logging.Logger
 }
 
 //создаем структуру, но возвращаем интерфейс. Так лучше, потому что роутер может поменяться и если роутер поменяется все может сломаться
-func NewHandler(logger logging.Logger) handlers.Handler {
+func NewHandler(logger *logging.Logger) handlers.Handler {
 	return &handler{
 		logger: logger,
 	}
