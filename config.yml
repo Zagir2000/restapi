@@ -1,3 +1,5 @@
 is_debug: true
 listen:
-  type: sock
+  type: port
+  host: 127.0.0.1
+  port: 800

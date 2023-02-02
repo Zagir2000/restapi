@@ -44,9 +44,6 @@ func Start(router *httprouter.Router, cfg *config.Config) {
 		logger.Debugf("socket path: %s", socketPath)
 		logger.Info("Listen unix socket")
 		listener, listenErr = net.Listen("unix", socketPath)
-		if err != nil {
-			logger.Fatal(err)
-		}
 		logger.Infof("Server is listening unix socket:%s", socketPath)
 	} else {
 		logger.Info("Listen tcp")
